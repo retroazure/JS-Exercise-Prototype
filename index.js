@@ -92,9 +92,38 @@ newPeep.toString();
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 
 }
+
+Car.prototype.fill = function(gallons){
+  this.tank = this.tank + gallons;
+
+  console.log(this.tank);
+}
+
+Car.prototype.drive = function(distance){
+  this.odometer = this.odometer + distance;
+  this.tank = this.tank - (distance/this.milesPerGallon);
+
+  if(this.tank <= 0){
+    console.log("I ran out of fuel at " + this.odometer + " miles."); 
+  }
+
+  console.log("odometer value: " + this.odometer + " tank value: " + this.tank);
+}
+
+let newTesla = new Car("Tesla", 10);
+
+newTesla.fill(600);
+newTesla.drive(400);
+newTesla.drive(500);
+
 
 /*
   TASK 3
