@@ -51,11 +51,10 @@ Person.prototype.eat = function(food) {
 
   this.stomach.push(food);
 
-  console.log(this.stomach);
-    
+    return this.stomach;
   }
   if(this.stomach.length > 10){
-    console.log("No effect.")
+    return "No effect.";
   }
   
 }
@@ -63,19 +62,19 @@ Person.prototype.eat = function(food) {
 Person.prototype.poop = function() {
   this.stomach = [];
 
-  console.log(this.stomach);
+  return this.stomach;
 }
 
 Person.prototype.toString = function(){
-  console.log(`${this.name}, ${this.age}`); 
+  return this.name + "," + this.age; 
 }
 
 let newPeep = new Person("John", 19);
 
-newPeep.eat("Oranges");
-newPeep.eat("Bananas");
-newPeep.poop();
-newPeep.toString();
+console.log(newPeep.eat("Oranges"));
+console.log(newPeep.eat("Bananas"));
+console.log(newPeep.poop());
+console.log(newPeep.toString());
 
 
 /*
@@ -104,7 +103,7 @@ function Car(model, milesPerGallon) {
 Car.prototype.fill = function(gallons){
   this.tank = this.tank + gallons;
 
-  console.log(this.tank);
+  return this.tank;
 }
 
 Car.prototype.drive = function(distance){
@@ -112,17 +111,17 @@ Car.prototype.drive = function(distance){
   this.tank = this.tank - (distance/this.milesPerGallon);
 
   if(this.tank <= 0){
-    console.log("I ran out of fuel at " + this.odometer + " miles."); 
+    return "I ran out of fuel at " + this.odometer + " miles."; 
   }
 
-  console.log("odometer value: " + this.odometer + " tank value: " + this.tank);
+  return "odometer value: " + this.odometer + " tank value: " + this.tank;
 }
 
 let newTesla = new Car("Tesla", 10);
 
-newTesla.fill(600);
-newTesla.drive(400);
-newTesla.drive(500);
+console.log(newTesla.fill(600));
+console.log(newTesla.drive(400));
+console.log(newTesla.drive(500));
 
 
 /*
@@ -132,10 +131,20 @@ newTesla.drive(500);
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  this.favoriteToy = favoriteToy;
 }
 
+Baby.prototype = Person.prototype;
+
+Baby.prototype.play = function() {
+  // console.log("Playing with " + this.favoriteToy);
+  return "Playing with " + this.favoriteToy;
+}
+
+let newBaby = new Baby("John", 2, "Skate");
+
+console.log(newBaby.play());
 /* 
   TASK 4
 
