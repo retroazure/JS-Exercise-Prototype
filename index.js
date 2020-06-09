@@ -149,10 +149,10 @@ console.log(newBaby.play());
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. If the keyword of new is used when calling the constructor function, the function will be a new object.
+  2. When using apply or call to call a function, this inside the function is the object passed as the argument
+  3. If a function is called as a method, this is the object of which the function is a property of. 
+  4. If a function is invoked as a free function, this is the global object, aka window.
 */
 
 
